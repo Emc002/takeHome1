@@ -1,25 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import TodoForm from './component/todolist/TodoForm';
 import TodoList from './component/todolist/TodoList';
 import Todo from './component/todolist/Todo';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/mainStyles.css'
-const LOCAL_STORAGE_KEY = 'react-todo-list-todos';
 
 function Todoapp() {
   const [todos, setTodos] = useState([]);
-
-  useEffect(() => {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
-  }, [todos]);
-
-  useEffect(() => {
-    const storageTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-    if (storageTodos) {
-      setTodos(storageTodos);
-    }
-  }, []);
-
+  
   function addTodo(todo) {
     setTodos([todo, ...todos]);
   }
